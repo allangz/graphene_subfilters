@@ -1,0 +1,95 @@
+[
+{
+  "model": "polls.question",
+  "pk": 1,
+  "fields": {
+    "question_text": "What's up?",
+    "pub_date": "2021-10-08T20:21:51.041Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 2,
+  "fields": {
+    "question_text": "Dummy Question",
+    "pub_date": "2021-10-08T22:06:19Z"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 1,
+  "fields": {
+    "question": 1,
+    "choice_text": "Not much",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 2,
+  "fields": {
+    "question": 1,
+    "choice_text": "The sky",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 4,
+  "fields": {
+    "question": 2,
+    "choice_text": "some choice",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 5,
+  "fields": {
+    "question": 2,
+    "choice_text": "first choice",
+    "votes": 0
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 6,
+  "fields": {
+    "question": 2,
+    "choice_text": "The outlier",
+    "votes": 2
+  }
+},
+{
+  "model": "polls.subchoice",
+  "pk": 1,
+  "fields": {
+    "choice": 2,
+    "sub_choice_text": "the example"
+  }
+},
+{
+  "model": "polls.subchoice",
+  "pk": 2,
+  "fields": {
+    "choice": 6,
+    "sub_choice_text": "another example"
+  }
+},
+{
+  "model": "polls.subchoice",
+  "pk": 3,
+  "fields": {
+    "choice": 6,
+    "sub_choice_text": "second example"
+  }
+},
+{
+  "model": "polls.subchoice",
+  "pk": 4,
+  "fields": {
+    "choice": 6,
+    "sub_choice_text": "second case"
+  }
+}
+]
