@@ -25,7 +25,7 @@ SECRET_KEY = '$)0g$3seo_hls6*%q+9u71+rmz204sy@#o)248m0eedsx5t9jx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['allan1234.pythonanywhere.com']
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "graphene_django",
-    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -121,6 +120,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT= './static'
 
 GRAPHENE = {
     "SCHEMA": "mock_site.schema.schema"
