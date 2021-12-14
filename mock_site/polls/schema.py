@@ -10,31 +10,44 @@ class SubChoiceType(DjangoObjectType):
 
 
 class ChoiceType(DjangoObjectType):
-    sub_choices = graphene.List(SubChoiceType, search_sub_choices=graphene.String())
+    sub_choices = graphene.List(SubChoiceType, search_sub_choices=graphene.String(), order_by=graphene.String())
 
     class Meta:
         model = Choice
         fields = ("id", "choice_text", "question")
 
-    def resolve_sub_choices(self, info, search_sub_choices=None):
+    def resolve_sub_choices(self, info, search_sub_choices=None,  order_by=None):
+        qs = self.subchoice_set.all()
         if search_sub_choices:
-            return self.subchoice_set.filter(sub_choice_text__icontains=search_sub_choices)
+            return qs.filter(sub_choice_text__icontains=search_sub_choices)
+        if order_by:
+            qs = qs.order_by(order_by)
 
-        return self.subchoice_set.all()
+        return qs
 
 
 class QuestionType(DjangoObjectType):
-    choices = graphene.List(ChoiceType, search_choices=graphene.String())
+    choices = graphene.List(ChoiceType, search_choices=graphene.String(), order_by=graphene.String())
+    is_old = graphene.Boolean(default_value=False)
 
     class Meta:
         model = Question
-        fields = ("id", "question_text")
+        fields = ("id", "question_text", "pub_date")
 
-    def resolve_choices(self, info, search_choices=None):
+    def resolve_is_old(self, info):
+        res = False
+        if self.id % 2 == 0:
+            res = True
+        return res
+
+    def resolve_choices(self, info, search_choices=None, order_by=None):
+        qs = self.choice_set.all()
         if search_choices:
-            return self.choice_set.filter(choice_text__icontains=search_choices)
+            qs = qs.filter(choice_text__icontains=search_choices)
+        if order_by:
+            qs = qs.order_by(order_by)
 
-        return self.choice_set.all()
+        return qs
 
 
 class Query(graphene.ObjectType):
